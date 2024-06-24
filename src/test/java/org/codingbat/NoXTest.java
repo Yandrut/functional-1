@@ -5,27 +5,27 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 
 public class NoXTest {
-    Functional1 testObj = new Functional1();
+    Functional1 underTest = new Functional1();
 
     @Test
-    public void testCase1() {
+    public void onlyOneStringWithX() {
         List<String> input = new ArrayList<>(Arrays.asList("the", "xxtxaxixxx"));
         List<String> expected = new ArrayList<>(Arrays.asList("the", "tai"));
-        assertEquals(testObj.noX(input),expected);
+        assertEquals(underTest.noX(input),expected);
     }
 
     @Test
-    public void testCase2() {
+    public void allStringsWithX() {
         List<String> input = new ArrayList<>(Arrays.asList("xxax", "xbxbx", "xxcx"));
         List<String> expected = new ArrayList<>(Arrays.asList("a", "bb", "c"));
-        assertEquals(testObj.noX(input),expected);
+        assertEquals(underTest.noX(input),expected);
     }
 
     @Test
-    public void emptyCase() {
+    public void emptyListCase() {
 
         List<String> input = new ArrayList<>();
         List<String> expected = new ArrayList<>();
-        assertEquals(testObj.noX(input),expected);
+        assertEquals(underTest.noX(input),expected);
     }
 }

@@ -5,26 +5,26 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 
 public class AddStarTest {
-    Functional1 testObj = new Functional1();
+    private final Functional1 underTest = new Functional1();
 
     @Test
-    public void testCase1() {
+    public void basicStringsCase() {
         List<String> input = new ArrayList<>(Arrays.asList("a", "bb", "ccc"));
         List<String> expected = new ArrayList<>(Arrays.asList("a*", "bb*", "ccc*"));
-        assertEquals(testObj.addStar(input),expected);
+        assertEquals(underTest.addStar(input),expected);
     }
 
     @Test
-    public void testCase2() {
+    public void stringAsWordsCase() {
         List<String> input = new ArrayList<>(Arrays.asList("hello", "there"));
         List<String> expected = new ArrayList<>(Arrays.asList("hello*", "there*"));
-        assertEquals(testObj.addStar(input),expected);
+        assertEquals(underTest.addStar(input),expected);
     }
 
     @Test
-    public void emptyCase() {
+    public void emptyListCase() {
         List<String> input = new ArrayList<>();
         List<String> expected = new ArrayList<>();
-        assertEquals(testObj.addStar(input),expected);
+        assertEquals(underTest.addStar(input),expected);
     }
 }

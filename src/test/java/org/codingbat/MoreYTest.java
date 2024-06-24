@@ -5,27 +5,27 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 
 public class MoreYTest {
-    Functional1 testObj = new Functional1();
+    Functional1 underTest = new Functional1();
 
     @Test
-    public void testCase1 () {
+    public void basicExampleCase() {
         List<String> input = new ArrayList<>(Arrays.asList("a", "b", "c"));
         List<String> expected = new ArrayList<>(Arrays.asList("yay", "yby", "ycy"));
-        assertEquals(testObj.moreY(input),expected);
+        assertEquals(underTest.moreY(input),expected);
     }
 
     @Test
-    public void testCase2 () {
+    public void basicCaseWithEmptyString() {
         List<String> input = new ArrayList<>(Arrays.asList("", "hello", "there"));
         List<String> expected = new ArrayList<>(Arrays.asList("yy", "yhelloy", "ytherey"));
-        assertEquals(testObj.moreY(input),expected);
+        assertEquals(underTest.moreY(input),expected);
     }
 
     @Test
-    public void emptyCase() {
+    public void emptyListCase() {
         List<String> input = new ArrayList<>();
         List<String> expected = new ArrayList<>();
-        assertEquals(testObj.moreY(input),expected);
+        assertEquals(underTest.moreY(input),expected);
     }
 
 
