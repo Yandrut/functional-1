@@ -1,30 +1,57 @@
 package org.codingbat;
 
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import java.util.*;
-import static org.junit.Assert.assertEquals;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Copies3Test {
-    Functional1 underTest = new Functional1();
 
-    @Test
-    public void basicExamplesCase() {
-        List<String> input = new ArrayList<>(Arrays.asList("a", "bb", "ccc"));
-        List<String> expected = new ArrayList<>(Arrays.asList("aaa", "bbbbbb", "ccccccccc"));
-        assertEquals(underTest.copies3(input),expected);
+    @ParameterizedTest
+    @MethodSource("testCopies3Cases")
+    public void testCopies(List<String> input, List<String> expected) {
+        assertEquals(expected, Functional1.copies3(input));
     }
 
-    @Test
-    public void basicCaseWithEmptyString() {
-        List<String> input = new ArrayList<>(Arrays.asList("24", "a", ""));
-        List<String> expected = new ArrayList<>(Arrays.asList("242424", "aaa", ""));
-        assertEquals(underTest.copies3(input),expected);
-    }
+    private static Stream<Arguments> testCopies3Cases() {
+        return Stream.of(
+                Arguments.of(
+                        Arrays.asList("a", "bb", "ccc"),
+                        Arrays.asList("aaa", "bbbbbb", "ccccccccc")
+                ),
+                Arguments.of(
+                        Arrays.asList("24", "a", ""),
+                        Arrays.asList("242424", "aaa", "")
+                ),
+                Arguments.of(
+                        List.of(),
+                        List.of()
+                ),
+                Arguments.of(
+                        Arrays.asList("x", "y", "z"),
+                        Arrays.asList("xxx", "yyy", "zzz")
+                ),
+                Arguments.of(
+                        Arrays.asList("abc", "123", "a1b2"),
+                        Arrays.asList("abcabcabc", "123123123", "a1b2a1b2a1b2")
+                ),
+                Arguments.of(
+                        Arrays.asList("!", "#@", "$$"),
+                        Arrays.asList("!!!", "#@#@#@", "$$$$$$")
+                ),
+                Arguments.of(
+                        Arrays.asList("", "", ""),
+                        Arrays.asList("", "", "")
+                ),
+                Arguments.of(
+                        Arrays.asList("null", null),
+                        Arrays.asList("nullnullnull", "nullnullnull")
 
-    @Test
-    public void emptyListCase() {
-        List<String> input = new ArrayList<>();
-        List<String> expected = new ArrayList<>();
-        assertEquals(underTest.copies3(input),expected);
+                )
+        );
     }
 }
