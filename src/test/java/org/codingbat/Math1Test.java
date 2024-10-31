@@ -40,8 +40,8 @@ public class Math1Test {
                         Arrays.asList(110, -90, 210, -190)
                 ),
                 Arguments.of(
-                        List.of(5),
-                        List.of(60)
+                        Arrays.asList(5),
+                        Arrays.asList(60)
                 )
         );
     }

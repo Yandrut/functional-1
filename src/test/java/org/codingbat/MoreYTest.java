@@ -40,8 +40,8 @@ public class MoreYTest {
                         Arrays.asList("y123y", "yabcy", "y!@#y")
                 ),
                 Arguments.of(
-                        List.of("single"),
-                        List.of("ysingley")
+                        Arrays.asList("single"),
+                        Arrays.asList("ysingley")
                 )
         );
     }

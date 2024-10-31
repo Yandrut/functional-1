@@ -39,11 +39,11 @@ public class NoXTest {
                 ),
                 Arguments.of(
                         Arrays.asList("example", "text", "without", "x"),
-                        Arrays.asList("example", "text", "without", "")
+                        Arrays.asList("eample", "tet", "without", "")
                 ),
                 Arguments.of(
                         Arrays.asList("mixedXcase", "X", "lowerx"),
-                        Arrays.asList("mixedcase", "", "lower")
+                        Arrays.asList("miedcase", "", "lower")
                 )
         );
     }

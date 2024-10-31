@@ -42,8 +42,8 @@ public class DoublingTest {
                             Arrays.asList(0, 4, -8, 10, 0)
                     ),
                     Arguments.of(
-                            List.of(9),
-                            List.of(18)
+                            Arrays.asList(9),
+                            Arrays.asList(18)
                     )
             );
         }
