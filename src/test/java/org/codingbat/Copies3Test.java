@@ -1,5 +1,7 @@
 package org.codingbat;
 
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,15 +11,16 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Execution(ExecutionMode.SAME_THREAD)
 public class Copies3Test {
 
     @ParameterizedTest
-    @MethodSource("testCopies3Cases")
+    @MethodSource("provideTestData")
     public void testCopies(List<String> input, List<String> expected) {
         assertEquals(expected, Functional1.copies3(input));
     }
 
-    private static Stream<Arguments> testCopies3Cases() {
+    private static Stream<Arguments> provideTestData() {
         return Stream.of(
                 Arguments.of(
                         Arrays.asList("a", "bb", "ccc"),

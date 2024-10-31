@@ -1,31 +1,48 @@
 package org.codingbat;
 import java.util.*;
-import org.junit.jupiter.api.Test;
-
+import java.util.stream.Stream;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Execution(ExecutionMode.SAME_THREAD)
 public class MoreYTest {
 
-    @Test
-    public void basicExampleCase() {
-        List<String> input = new ArrayList<>(Arrays.asList("a", "b", "c"));
-        List<String> expected = new ArrayList<>(Arrays.asList("yay", "yby", "ycy"));
-        assertEquals(Functional1.moreY(input),expected);
+    @ParameterizedTest
+    @MethodSource("provideTestData")
+    void testMoreY(List<String> input, List<String> expected) {
+        assertEquals(expected, Functional1.moreY(input));
     }
 
-    @Test
-    public void basicCaseWithEmptyString() {
-        List<String> input = new ArrayList<>(Arrays.asList("", "hello", "there"));
-        List<String> expected = new ArrayList<>(Arrays.asList("yy", "yhelloy", "ytherey"));
-        assertEquals(Functional1.moreY(input),expected);
+    static Stream<Arguments> provideTestData() {
+        return Stream.of(
+                Arguments.of(
+                        Arrays.asList("a", "b", "c"),
+                        Arrays.asList("yay", "yby", "ycy")
+                ),
+                Arguments.of(
+                        Arrays.asList("", "hello", "there"),
+                        Arrays.asList("yy", "yhelloy", "ytherey")
+                ),
+                Arguments.of(
+                        new ArrayList<>(),
+                        new ArrayList<>()
+                ),
+                Arguments.of(
+                        Arrays.asList("x", "y", "z"),
+                        Arrays.asList("yxy", "yyy", "yzy")
+                ),
+                Arguments.of(
+                        Arrays.asList("123", "abc", "!@#"),
+                        Arrays.asList("y123y", "yabcy", "y!@#y")
+                ),
+                Arguments.of(
+                        List.of("single"),
+                        List.of("ysingley")
+                )
+        );
     }
-
-    @Test
-    public void emptyListCase() {
-        List<String> input = new ArrayList<>();
-        List<String> expected = new ArrayList<>();
-        assertEquals(Functional1.moreY(input),expected);
-    }
-
-
 }

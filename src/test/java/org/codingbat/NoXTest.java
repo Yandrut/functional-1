@@ -1,30 +1,50 @@
 package org.codingbat;
 import java.util.*;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
 
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+@Execution(ExecutionMode.SAME_THREAD)
 public class NoXTest {
 
-    @Test
-    public void onlyOneStringWithX() {
-        List<String> input = new ArrayList<>(Arrays.asList("the", "xxtxaxixxx"));
-        List<String> expected = new ArrayList<>(Arrays.asList("the", "tai"));
-        assertEquals(Functional1.noX(input),expected);
+    @ParameterizedTest
+    @MethodSource("provideTestData")
+    void testNoX(List<String> input, List<String> expected) {
+        assertEquals(expected, Functional1.noX(input));
     }
 
-    @Test
-    public void allStringsWithX() {
-        List<String> input = new ArrayList<>(Arrays.asList("xxax", "xbxbx", "xxcx"));
-        List<String> expected = new ArrayList<>(Arrays.asList("a", "bb", "c"));
-        assertEquals(Functional1.noX(input),expected);
-    }
-
-    @Test
-    public void emptyListCase() {
-
-        List<String> input = new ArrayList<>();
-        List<String> expected = new ArrayList<>();
-        assertEquals(Functional1.noX(input),expected);
+    static Stream<Arguments> provideTestData() {
+        return Stream.of(
+                Arguments.of(
+                        Arrays.asList("the", "xxtxaxixxx"),
+                        Arrays.asList("the", "tai")
+                ),
+                Arguments.of(
+                        Arrays.asList("xxax", "xbxbx", "xxcx"),
+                        Arrays.asList("a", "bb", "c")
+                ),
+                Arguments.of(
+                        new ArrayList<>(),
+                        new ArrayList<>()
+                ),
+                Arguments.of(
+                        Arrays.asList("x", "xx", "xxx"),
+                        Arrays.asList("", "", "")
+                ),
+                Arguments.of(
+                        Arrays.asList("example", "text", "without", "x"),
+                        Arrays.asList("example", "text", "without", "")
+                ),
+                Arguments.of(
+                        Arrays.asList("mixedXcase", "X", "lowerx"),
+                        Arrays.asList("mixedcase", "", "lower")
+                )
+        );
     }
 }
