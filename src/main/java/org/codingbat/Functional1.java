@@ -9,7 +9,7 @@ public class Functional1 {
     /**
      *
      * Given a list of integers, return a list where each integer is multiplied by 2.
-     * @param numbers
+     * @param numbers input list
      * @return modified list
      */
     public static List<Integer> doubling(List<Integer> numbers) {
@@ -19,7 +19,7 @@ public class Functional1 {
 
     /**
      *  Given a list of integers, return a list where each integer is multiplied with itself.
-     * @param numbers
+     * @param numbers input list
      * @return modified list
      */
     public static List<Integer> square(List<Integer> numbers) {
@@ -29,7 +29,7 @@ public class Functional1 {
 
     /**
      *  Given a list of strings, return a list where each string has "*" added at its end.
-     * @param strings input
+     * @param strings input list
      * @return modified list
      */
     public static List<String> addStar(List<String> strings) {
@@ -43,7 +43,7 @@ public class Functional1 {
 
     /**
      *  Given a list of strings, return a list where each string is replaced by 3 copies of the string concatenated together.
-     * @param strings
+     * @param strings input list
      * @return modified list
      */
     public static List<String> copies3(List<String> strings) {
@@ -57,7 +57,7 @@ public class Functional1 {
 
     /**
      * Given a list of strings, return a list where each string has "y" added at its start and end.
-     * @param strings
+     * @param strings input list
      * @return modified list
      */
     public static List<String> moreY(List<String> strings) {
@@ -67,7 +67,7 @@ public class Functional1 {
 
     /**
      * Given a list of integers, return a list where each integer is added to 1 and the result is multiplied by 10.
-     * @param numbers
+     * @param numbers input list
      * @return modified list
      */
     public static List<Integer> math1(List<Integer> numbers) {
@@ -77,7 +77,7 @@ public class Functional1 {
 
     /**
      * Given a list of non-negative integers, return an integer list of the rightmost digits.
-     * @param numbers
+     * @param numbers input list
      * @return modified list
      */
     public static List<Integer> rightDigit(List<Integer> numbers) {
@@ -87,7 +87,7 @@ public class Functional1 {
 
     /**
      * Given a list of strings, return a list where each string is converted to lower case
-     * @param strings
+     * @param strings input list
      * @return modified list
      */
     public static List<String> lower(List<String> strings) {
@@ -97,7 +97,7 @@ public class Functional1 {
 
     /**
      * Given a list of strings, return a list where each string has all its "x" removed.
-     * @param strings
+     * @param strings input list
      * @return modified list
      */
     public static List<String> noX(List<String> strings) {
