@@ -101,7 +101,7 @@ public class Functional1 {
      * @return modified list
      */
     public static List<String> noX(List<String> strings) {
-        strings.replaceAll(s -> s.replace("x", ""));
+        strings.replaceAll(s -> s.toLowerCase().replace("x", ""));
         return strings;
     }
 }
